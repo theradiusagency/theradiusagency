@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Radius Agency — Extend Your Reach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #1A2818;
+  --forest: #2D5040;
+  --gold: #C9A040;
+  --sage: #7A9E85;
+  --mid: #4A6B55;
+  --parch: #F5EFE0;
+  --off: #FDFAF5;
+  --border: #E0D8C0;
+  --muted: #6B7C6A;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'Courier New', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--parch); color: var(--deep); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--parch); border-bottom: 0.5px solid var(--border);
+  padding: 0 5vw; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo svg { width: 120px; height: 32px; }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; transition: color .2s; }
+.nav-links a:hover { color: var(--deep); }
+.nav-cta {
+  font-size: 13px; font-weight: 500; padding: 9px 22px;
+  border: 1px solid var(--deep); color: var(--deep); border-radius: 2px;
+  transition: background .2s, color .2s;
+}
+.nav-cta:hover { background: var(--deep); color: var(--parch); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 5vw 60px; position: relative; overflow: hidden;
+}
+.hero-bg-circle {
+  position: absolute; right: -6vw; top: 50%; transform: translateY(-50%);
+  width: 52vw; max-width: 640px; aspect-ratio: 1;
+  border-radius: 50%; border: 0.5px solid var(--border);
+  pointer-events: none;
+}
+.hero-bg-circle-2 {
+  position: absolute; right: 2vw; top: 50%; transform: translateY(-50%);
+  width: 38vw; max-width: 480px; aspect-ratio: 1;
+  border-radius: 50%; border: 0.5px solid rgba(45,80,64,0.12);
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+}
+.hero-title {
+  font-family: var(--serif); font-size: clamp(42px, 6.5vw, 88px);
+  font-weight: 700; line-height: 1.05; color: var(--deep);
+  max-width: 760px; margin-bottom: 28px;
+}
+.hero-title em { font-style: italic; color: var(--forest); }
+.hero-sub {
+  font-size: clamp(15px, 1.5vw, 18px); color: var(--muted);
+  max-width: 540px; line-height: 1.7; margin-bottom: 44px;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block; padding: 14px 32px;
+  background: var(--deep); color: var(--parch);
+  font-size: 14px; font-weight: 500; border-radius: 2px;
+  transition: background .2s;
+}
+.btn-primary:hover { background: var(--forest); }
+.btn-secondary {
+  display: inline-block; padding: 14px 32px;
+  border: 1px solid var(--border); color: var(--deep);
+  font-size: 14px; font-weight: 500; border-radius: 2px;
+  transition: border-color .2s;
+}
+.btn-secondary:hover { border-color: var(--forest); }
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 5vw;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--sage); text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-scroll::before { content:''; width:32px; height:0.5px; background:var(--sage); }
+
+/* ── TICKER ── */
+.ticker { background: var(--forest); padding: 14px 0; overflow: hidden; border-top: none; }
+.ticker-inner { display: flex; gap: 48px; white-space: nowrap; animation: ticker 28s linear infinite; width: max-content; }
+.ticker-inner span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--sage); text-transform: uppercase; }
+.ticker-inner span.dot { color: var(--gold); }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTION SHELLS ── */
+section { padding: 100px 5vw; }
+.section-tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-tag::after { content:''; flex:1; max-width:40px; height:0.5px; background:var(--gold); }
+.section-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); font-weight: 700; color: var(--deep); line-height: 1.1; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.7; margin-top: 16px; max-width: 600px; }
+
+/* ── PAIN POINTS ── */
+.pain { background: var(--deep); }
+.pain .section-tag { color: var(--sage); }
+.pain .section-tag::after { background: var(--sage); }
+.pain .section-title { color: var(--parch); }
+.pain .section-sub { color: var(--sage); }
+.pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; margin-top: 56px; background: rgba(255,255,255,0.06); }
+.pain-card { background: var(--deep); padding: 36px 28px; }
+.pain-stat { font-family: var(--serif); font-size: 52px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 10px; }
+.pain-label { font-size: 14px; color: var(--sage); line-height: 1.5; }
+.pain-divider { width: 28px; height: 1px; background: var(--gold); margin: 14px 0; }
+
+/* ── SERVICES ── */
+.services { background: var(--off); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; margin-top: 56px; }
+.service-card { background: var(--parch); padding: 40px 32px; border: 0.5px solid var(--border); position: relative; overflow: hidden; transition: background .2s; }
+.service-card:hover { background: var(--forest); }
+.service-card:hover .service-title,
+.service-card:hover .service-desc,
+.service-card:hover .service-num { color: var(--parch); }
+.service-card:hover .service-divider { background: var(--gold); }
+.service-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 20px; }
+.service-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--deep); margin-bottom: 12px; line-height: 1.2; }
+.service-divider { width: 24px; height: 1px; background: var(--gold); margin: 16px 0; transition: background .2s; }
+.service-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.service-items { margin-top: 16px; list-style: none; }
+.service-items li { font-size: 13px; color: var(--muted); padding: 5px 0; border-bottom: 0.5px solid var(--border); }
+.service-card:hover .service-items li { color: rgba(245,239,224,0.7); border-color: rgba(255,255,255,0.1); }
+.service-items li::before { content: '→ '; color: var(--gold); }
+
+/* ── PROCESS ── */
+.process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 56px; position: relative; }
+.process-steps::before { content:''; position:absolute; top:28px; left:12.5%; right:12.5%; height:0.5px; background:var(--border); z-index:0; }
+.process-step { padding: 0 24px 0 0; position: relative; z-index: 1; }
+.step-dot { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background: var(--parch); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+.step-dot-inner { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+.step-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 8px; }
+.step-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--deep); margin-bottom: 10px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ── WHY US ── */
+.why { background: var(--forest); }
+.why .section-tag { color: var(--gold); }
+.why .section-tag::after { background: var(--gold); }
+.why .section-title { color: var(--parch); }
+.why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; margin-top: 56px; background: rgba(255,255,255,0.08); }
+.why-card { background: var(--forest); padding: 40px 36px; }
+.why-icon { width: 40px; height: 40px; border: 0.5px solid rgba(201,160,64,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.why-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.why-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--parch); margin-bottom: 12px; }
+.why-desc { font-size: 14px; color: var(--sage); line-height: 1.7; }
+.why-stat { font-family: var(--serif); font-size: 36px; font-weight: 700; color: var(--gold); margin-top: 16px; }
+
+/* ── PORTFOLIO ── */
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 56px; }
+.portfolio-card { background: var(--off); border: 0.5px solid var(--border); padding: 36px; position: relative; overflow: hidden; transition: background .2s; }
+.portfolio-card:hover { background: var(--deep); }
+.portfolio-card:hover .port-client,
+.portfolio-card:hover .port-title,
+.portfolio-card:hover .port-result-label,
+.portfolio-card:hover .port-result { color: var(--parch); }
+.portfolio-card:hover .port-tag { background: rgba(201,160,64,0.15); color: var(--gold); }
+.portfolio-card:hover .port-divider { background: var(--gold); }
+.port-tag { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; background: rgba(45,80,64,0.08); color: var(--forest); border-radius: 2px; margin-bottom: 20px; }
+.port-client { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--sage); text-transform: uppercase; margin-bottom: 10px; }
+.port-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--deep); line-height: 1.3; margin-bottom: 12px; }
+.port-divider { width: 24px; height: 1px; background: var(--border); margin: 16px 0; }
+.port-result-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 4px; }
+.port-result { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--deep); }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--parch); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 56px; }
+.testimonial-card { background: var(--off); border: 0.5px solid var(--border); padding: 36px; }
+.testimonial-quote { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--deep); line-height: 1.6; margin-bottom: 28px; }
+.testimonial-quote::before { content: '"'; color: var(--gold); font-size: 40px; line-height: 0.8; display: block; margin-bottom: 8px; }
+.testimonial-name { font-size: 14px; font-weight: 500; color: var(--deep); }
+.testimonial-role { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--sage); text-transform: uppercase; margin-top: 3px; }
+
+/* ── ARTICLES ── */
+.articles { background: var(--off); }
+.articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
+.article-card { border: 0.5px solid var(--border); background: var(--parch); overflow: hidden; }
+.article-img { height: 180px; background: var(--forest); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+.article-img svg { width: 56px; height: 56px; opacity: 0.2; }
+.article-body { padding: 28px; }
+.article-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.article-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--deep); line-height: 1.3; margin-bottom: 10px; }
+.article-excerpt { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }
+.article-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest); display: flex; align-items: center; gap: 6px; }
+.article-link::after { content: '→'; }
+
+/* ── CTA ── */
+.cta-section { background: var(--deep); position: relative; overflow: hidden; }
+.cta-circle-1 { position: absolute; right: -80px; top: -80px; width: 400px; height: 400px; border-radius: 50%; border: 0.5px solid rgba(45,80,64,0.4); }
+.cta-circle-2 { position: absolute; right: 40px; top: -20px; width: 280px; height: 280px; border-radius: 50%; border: 0.5px solid rgba(45,80,64,0.25); }
+.cta-inner { max-width: 700px; position: relative; z-index: 1; }
+.cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); font-weight: 700; color: var(--parch); line-height: 1.05; margin-bottom: 20px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 16px; color: var(--sage); line-height: 1.7; margin-bottom: 44px; max-width: 520px; }
+.cta-form { display: flex; flex-direction: column; gap: 14px; max-width: 480px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cta-form input, .cta-form select, .cta-form textarea {
+  background: rgba(255,255,255,0.06); border: 0.5px solid rgba(224,216,192,0.2);
+  color: var(--parch); padding: 14px 16px; font-size: 14px; font-family: var(--sans);
+  border-radius: 2px; outline: none; width: 100%;
+  transition: border-color .2s;
+}
+.cta-form input::placeholder, .cta-form select::placeholder, .cta-form textarea::placeholder { color: var(--muted); }
+.cta-form input:focus, .cta-form select:focus, .cta-form textarea:focus { border-color: var(--gold); }
+.cta-form select option { background: var(--deep); }
+.cta-form textarea { resize: vertical; min-height: 100px; }
+.cta-submit {
+  background: var(--gold); color: var(--deep); border: none;
+  padding: 15px 32px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 2px; cursor: pointer;
+  letter-spacing: 0.02em; align-self: flex-start;
+  transition: background .2s;
+}
+.cta-submit:hover { background: #b8902e; }
+.cta-note { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--muted); margin-top: 6px; }
+
+/* ── FOOTER ── */
+footer { background: var(--deep); border-top: 0.5px solid rgba(224,216,192,0.1); padding: 60px 5vw 36px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 0.5px solid rgba(224,216,192,0.1); }
+.footer-brand p { font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 16px; max-width: 280px; }
+.footer-col h4 { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { font-size: 13px; color: var(--muted); transition: color .2s; }
+.footer-col ul li a:hover { color: var(--parch); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); }
+.footer-tagline { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--sage); }
+
+/* ── UTILITIES ── */
+.divider-gold { width: 32px; height: 1.5px; background: var(--gold); margin: 20px 0 32px; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="18" r="12" stroke="#2D5040" stroke-width="1.8" fill="none"/>
+      <line x1="16" y1="18" x2="28" y2="18" stroke="#C9A040" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="16" cy="18" r="2.5" fill="#C9A040"/>
+      <circle cx="28" cy="18" r="2.5" fill="#C9A040"/>
+      <text x="36" y="15" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#1A2818">Radius</text>
+      <text x="36" y="28" font-family="Arial" font-size="6.5" fill="#7A9E85" letter-spacing="2">AGENCY</text>
+    </svg>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">Why us</a>
+    <a href="#articles">Articles</a>
+    <a href="#contact" class="nav-cta">Book a call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle-2"></div>
+  <p class="hero-eyebrow">The Radius Agency · theradiusagency.com</p>
+  <h1 class="hero-title">Your science. Our reach.<br><em>Be understood,</em><br>not just seen.</h1>
+  <p class="hero-sub">We help US clean energy and climate tech organizations cut through the noise with marketing as rigorous as the science they're advancing — at a fraction of the cost of a US agency.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Book a strategy call</a>
+    <a href="#work" class="btn-secondary">See our work</a>
+  </div>
+  <p class="hero-scroll">Scroll to explore</p>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker-content">
+    <span>Geothermal energy</span><span class="dot">·</span>
+    <span>Climate tech startups</span><span class="dot">·</span>
+    <span>Clean energy associations</span><span class="dot">·</span>
+    <span>Sustainability SaaS</span><span class="dot">·</span>
+    <span>Environmental research</span><span class="dot">·</span>
+    <span>Mission-driven B2B</span><span class="dot">·</span>
+    <span>Renewable energy</span><span class="dot">·</span>
+    <span>Carbon tech</span><span class="dot">·</span>
+    <span>Energy policy & advocacy</span><span class="dot">·</span>
+    <span>Geothermal energy</span><span class="dot">·</span>
+    <span>Climate tech startups</span><span class="dot">·</span>
+    <span>Clean energy associations</span><span class="dot">·</span>
+    <span>Sustainability SaaS</span><span class="dot">·</span>
+    <span>Environmental research</span><span class="dot">·</span>
+    <span>Mission-driven B2B</span><span class="dot">·</span>
+    <span>Renewable energy</span><span class="dot">·</span>
+    <span>Carbon tech</span><span class="dot">·</span>
+    <span>Energy policy & advocacy</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <p class="section-tag">The problem</p>
+  <h2 class="section-title" style="color:var(--parch)">Great science.<br>Invisible marketing.</h2>
+  <p class="section-sub">US B2B organizations in clean energy and climate tech are technically brilliant and chronically under-marketed. The gap is real — and fixable.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-stat">59%</div>
+      <div class="pain-divider"></div>
+      <p class="pain-label">of CMOs lack the budget to execute their marketing strategy</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-stat">90%</div>
+      <div class="pain-divider"></div>
+      <p class="pain-label">of B2B marketing teams can't prove their ROI to leadership</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-stat">65%</div>
+      <div class="pain-divider"></div>
+      <p class="pain-label">of marketing content is created and never used by the sales team</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-stat">96%</div>
+      <div class="pain-divider"></div>
+      <p class="pain-label">of organizations do thought leadership — almost none do it well</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-tag">What we do</p>
+  <h2 class="section-title">Four services.<br>One direction.</h2>
+  <p class="section-sub">Every service is built to move your buyers through the funnel — from awareness to trust to action.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3 class="service-title">Social Media Marketing</h3>
+      <div class="service-divider"></div>
+      <p class="service-desc">Platform strategy, content, and community management that builds authority — not just followers.</p>
+      <ul class="service-items">
+        <li>LinkedIn authority building</li>
+        <li>Content calendar & production</li>
+        <li>Community management</li>
+        <li>Performance reporting</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3 class="service-title">Paid Advertising</h3>
+      <div class="service-divider"></div>
+      <p class="service-desc">Google, Meta, and LinkedIn campaigns built for B2B buying cycles, not vanity metrics.</p>
+      <ul class="service-items">
+        <li>Google Ads & Meta campaigns</li>
+        <li>LinkedIn B2B advertising</li>
+        <li>Retargeting & lookalike audiences</li>
+        <li>Full attribution reporting</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3 class="service-title">SEO & Content Strategy</h3>
+      <div class="service-divider"></div>
+      <p class="service-desc">Thought leadership that earns trust from search engines and from the people who run procurement.</p>
+      <ul class="service-items">
+        <li>Technical & on-page SEO</li>
+        <li>Long-form articles & whitepapers</li>
+        <li>Case studies & reports</li>
+        <li>Content distribution strategy</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <h3 class="service-title">Full-Service Strategy</h3>
+      <div class="service-divider"></div>
+      <p class="service-desc">End-to-end marketing partnership — positioning, messaging, campaigns, and results.</p>
+      <ul class="service-items">
+        <li>Brand positioning & messaging</li>
+        <li>Multi-channel campaign planning</li>
+        <li>Sales-marketing alignment</li>
+        <li>Quarterly strategy reviews</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:var(--parch);">
+  <p class="section-tag">How we work</p>
+  <h2 class="section-title">The Radius Method</h2>
+  <p class="section-sub">Four phases that turn your expertise into market authority.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-dot"><div class="step-dot-inner"></div></div>
+      <div class="step-num">01</div>
+      <h3 class="step-title">Diagnose</h3>
+      <p class="step-desc">Audit your positioning, competitors, and content gaps. Understand exactly what your buyers need to hear — and what they're hearing from everyone else.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot"><div class="step-dot-inner"></div></div>
+      <div class="step-num">02</div>
+      <h3 class="step-title">Position</h3>
+      <p class="step-desc">Craft your unique market position. Define the message architecture for every stakeholder in a buying committee of 5 to 16 people.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot"><div class="step-dot-inner"></div></div>
+      <div class="step-num">03</div>
+      <h3 class="step-title">Create</h3>
+      <p class="step-desc">Build content rooted in your team's real expertise. Thought leadership that earns trust — not just traffic. Content your sales team actually uses.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot"><div class="step-dot-inner"></div></div>
+      <div class="step-num">04</div>
+      <h3 class="step-title">Amplify</h3>
+      <p class="step-desc">Invest in distribution, paid amplification, and SEO. We allocate 60% of effort to getting your work seen — because creation without reach is invisible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="about">
+  <p class="section-tag">Why Radius</p>
+  <h2 class="section-title" style="color:var(--parch)">Strategic expertise.<br>Without the NYC price tag.</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="12" x2="21" y2="12"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <h3 class="why-title">Born in Alexandria</h3>
+      <p class="why-desc">Our roots in ancient Alexandria — home of Euclid's geometry and the Pharos lighthouse — shape how we think: rigorously, precisely, with a long view. The city that invented the radius invented us.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3 class="why-title">We know your world</h3>
+      <p class="why-desc">We've worked directly with US organizations like Geothermal Rising. We understand your buyers, your language, your procurement cycles, and your scientific credibility requirements.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3 class="why-title">40–60% cost advantage</h3>
+      <p class="why-desc">US agencies charge $15–25k/month retainers. We deliver equivalent strategic quality at a fraction of that — solving your #1 pain point directly. Budget that would hire one US freelancer buys a full team here.</p>
+      <div class="why-stat">40–60%</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <h3 class="why-title">Outside perspective</h3>
+      <p class="why-desc">The best positioning ideas rarely come from inside the echo chamber. Our global vantage point surfaces differentiation your US competitors haven't considered — because they're too close to see it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="work" style="background:var(--off);">
+  <p class="section-tag">Our work</p>
+  <h2 class="section-title">Selected projects</h2>
+  <p class="section-sub">Real results for organizations doing work that matters.</p>
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <span class="port-tag">Clean Energy · Association</span>
+      <p class="port-client">Geothermal Rising</p>
+      <h3 class="port-title">Thought leadership & communications strategy for a US clean energy advocacy organization</h3>
+      <div class="port-divider"></div>
+      <p class="port-result-label">Outcome</p>
+      <p class="port-result">Expanded reach & stakeholder engagement</p>
+    </div>
+    <div class="portfolio-card">
+      <span class="port-tag">Climate Tech · SaaS</span>
+      <p class="port-client">Coming soon</p>
+      <h3 class="port-title">Full-service positioning overhaul for a B2B sustainability platform entering the US market</h3>
+      <div class="port-divider"></div>
+      <p class="port-result-label">Status</p>
+      <p class="port-result">Currently onboarding</p>
+    </div>
+    <div class="portfolio-card">
+      <span class="port-tag">Your organization</span>
+      <p class="port-client">Could be you</p>
+      <h3 class="port-title">We're actively taking on new clients in clean energy, climate tech, and mission-driven B2B</h3>
+      <div class="port-divider"></div>
+      <p class="port-result-label">Next step</p>
+      <p class="port-result" style="font-size:18px;"><a href="#contact" style="color:var(--gold);text-decoration:underline;text-underline-offset:4px;">Book a call →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-tag">What clients say</p>
+  <h2 class="section-title">Trusted by the people<br>doing the real work.</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-quote">The Radius team brought a level of strategic rigor we hadn't seen from previous marketing partners. They understood our technical audience immediately — no onboarding required.</p>
+      <p class="testimonial-name">VP of Communications</p>
+      <p class="testimonial-role">US Clean Energy Association</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">We were invisible in a crowded market. Radius identified our positioning gap in the first week and had us producing content that actually resonated with our buyers within a month.</p>
+      <p class="testimonial-name">Co-Founder & CEO</p>
+      <p class="testimonial-role">Climate Tech Startup, San Francisco</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">The cost advantage is real, but that's not why we stayed. We stayed because the strategic quality is genuinely world-class. They think like partners, not vendors.</p>
+      <p class="testimonial-name">Director of Marketing</p>
+      <p class="testimonial-role">B2B Sustainability SaaS Platform</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles" id="articles">
+  <p class="section-tag">Insights</p>
+  <h2 class="section-title">From the Radius journal</h2>
+  <p class="section-sub">Rigorous thinking on B2B marketing, clean energy communications, and market positioning.</p>
+  <div class="articles-grid">
+    <div class="article-card">
+      <div class="article-img" style="background:#1A2818;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A040" stroke-width="1"><circle cx="12" cy="12" r="10"/><line x1="12" y1="12" x2="21" y2="12"/><circle cx="12" cy="12" r="2" fill="#C9A040" stroke="none"/></svg>
+      </div>
+      <div class="article-body">
+        <p class="article-tag">Positioning</p>
+        <h3 class="article-title">Why US clean energy organizations are the most under-marketed in B2B</h3>
+        <p class="article-excerpt">The science is world-class. The marketing is an afterthought. Here's why the gap exists — and how to close it before your competitors do.</p>
+        <a href="#" class="article-link">Read article</a>
+      </div>
+    </div>
+    <div class="article-card">
+      <div class="article-img" style="background:#2D5040;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A040" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="article-body">
+        <p class="article-tag">Thought Leadership</p>
+        <h3 class="article-title">The thought leadership theater problem in B2B — and what real authority looks like</h3>
+        <p class="article-excerpt">96% of B2B organizations produce thought leadership. Almost none do it well. The difference isn't budget — it's whether real experts are involved.</p>
+        <a href="#" class="article-link">Read article</a>
+      </div>
+    </div>
+    <div class="article-card">
+      <div class="article-img" style="background:#4A6B55;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C9A040" stroke-width="1"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10"/></svg>
+      </div>
+      <div class="article-body">
+        <p class="article-tag">Strategy</p>
+        <h3 class="article-title">How offshore agencies can beat US agencies on strategy — not just on price</h3>
+        <p class="article-excerpt">The cost advantage is real. But the outside perspective is the real edge. Here's how distance from the echo chamber unlocks differentiation your US competitors can't see.</p>
+        <a href="#" class="article-link">Read article</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="cta-circle-1"></div>
+  <div class="cta-circle-2"></div>
+  <div class="cta-inner">
+    <p class="section-tag" style="color:var(--sage);">Let's work together</p>
+    <h2 class="cta-title">Find your<br><em>radius.</em></h2>
+    <p class="cta-sub">Book a free 30-minute strategy call. We'll audit your current positioning and show you exactly where the gap is — no pitch, no obligation.</p>
+    <form class="cta-form" onsubmit="return false;">
+      <div class="form-row">
+        <input type="text" placeholder="Your name" required>
+        <input type="text" placeholder="Organization">
+      </div>
+      <input type="email" placeholder="Work email" required>
+      <select>
+        <option value="" disabled selected>Service you're interested in</option>
+        <option>Social Media Marketing</option>
+        <option>Paid Advertising</option>
+        <option>SEO & Content Strategy</option>
+        <option>Full-Service Strategy</option>
+        <option>Not sure yet — let's talk</option>
+      </select>
+      <textarea placeholder="Tell us about your organization and what you're trying to achieve (optional)"></textarea>
+      <button type="submit" class="cta-submit">Book a strategy call →</button>
+      <p class="cta-note">We respond within 24 hours · No spam · No hard sell</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <svg width="130" height="34" viewBox="0 0 130 34" fill="none">
+        <circle cx="15" cy="17" r="11" stroke="#F5EFE0" stroke-width="1.6" fill="none"/>
+        <line x1="15" y1="17" x2="26" y2="17" stroke="#C9A040" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="15" cy="17" r="2.2" fill="#C9A040"/>
+        <circle cx="26" cy="17" r="2.2" fill="#C9A040"/>
+        <text x="33" y="14" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#F5EFE0">Radius</text>
+        <text x="33" y="27" font-family="Arial" font-size="6" fill="#7A9E85" letter-spacing="2">AGENCY</text>
+      </svg>
+      <p>Marketing for mission-driven B2B organizations who need to be understood, not just seen. Born in Alexandria. Serving US markets.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Social media</a></li>
+        <li><a href="#services">Paid advertising</a></li>
+        <li><a href="#services">SEO & content</a></li>
+        <li><a href="#services">Full-service strategy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">Why Radius</a></li>
+        <li><a href="#work">Our work</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@theradiusagency.com">hello@theradiusagency.com</a></li>
+        <li><a href="#contact">Book a call</a></li>
+        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+        <li><a href="#">theradiusagency.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 The Radius Agency · Alexandria, Egypt · All rights reserved</p>
+    <p class="footer-tagline">"Your science. Our reach."</p>
+  </div>
+</footer>
+
+</body>
+</html>
